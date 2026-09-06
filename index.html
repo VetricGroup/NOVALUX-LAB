@@ -27,6 +27,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+  <!-- Preload hero image para mejorar LCP -->
+  <link rel="preload" as="image" href="images/foto1.png">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -58,6 +60,12 @@
       }
     }
   </script>
+  <!-- AOS: Scroll animations (lightweight) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <!-- Lenis: smooth scrolling / velocity control -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <!-- Anime.js for subtle micro-interactions (deferred) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
 
   <style>
     body {
@@ -101,6 +109,40 @@
       border-color: rgba(196, 241, 53, 0.4);
       background-color: #161619;
     }
+
+    /* Impact animations: tilt cards, reveal masks, stronger neon glows */
+    .tilt-card {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      will-change: transform;
+      transition: transform 450ms cubic-bezier(.2,.9,.2,1), box-shadow 350ms ease;
+    }
+    .tilt-card:hover {
+      box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(196,241,53,0.12);
+      transform: translateY(-10px) rotateX(0deg) rotateY(0deg) scale(1.02);
+    }
+
+    .impact {
+      will-change: transform, opacity;
+    }
+
+    /* Image reveal overlay */
+    .reveal-wrap { position: relative; overflow: hidden; }
+    .reveal-wrap .img-overlay {
+      position: absolute; inset: 0; background: linear-gradient(90deg,#0a0a0a 0%, rgba(196,241,53,0.08) 50%, #0a0a0a 100%);
+      transform: translateX(0%);
+      z-index: 20; pointer-events:none;
+    }
+    .reveal-img { transform-origin: center center; transition: transform 900ms cubic-bezier(.2,.9,.2,1); }
+
+    /* Stronger neon text shadow for titles */
+    .neon-title {
+      text-shadow: 0 6px 30px rgba(196,241,53,0.12), 0 0 18px rgba(196,241,53,0.06);
+    }
+
+    /* Utility for subtle 3D tilt effect on group hover */
+    .group-tilt { perspective: 900px; }
+
   </style>
 </head>
 
@@ -116,6 +158,7 @@
           src="images/logo.png" 
           alt="NOVALUX Logo" 
           class="h-9 sm:h-11 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+          loading="eager" decoding="async"
           onerror="this.onerror=null; this.src='logo.png';"
         />
         <div class="flex flex-col">
@@ -193,7 +236,7 @@
   <!-- ================= HERO SECTION ================= -->
   <section class="relative min-h-[92vh] pt-32 pb-16 flex flex-col justify-center items-center px-5 bg-radial-glow overflow-hidden">
     
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-brand-neon/10 rounded-full blur-[140px] pointer-events-none"></div>
+    <div id="heroGlow" class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-brand-neon/10 rounded-full blur-[140px] pointer-events-none"></div>
 
     <div class="max-w-4xl mx-auto text-center z-10 relative">
       
@@ -204,20 +247,18 @@
       </div>
 
       <!-- Título Principal -->
-      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight">
+      <h1 id="heroTitle" data-animate="hero" class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight neon-title">
         Detailing Automotriz <br class="hidden sm:block" />
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-white to-brand-neon">
-          Premium
-        </span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-white to-brand-neon">Premium</span>
       </h1>
 
       <!-- Subtítulo -->
-      <p class="text-base sm:text-lg md:text-xl text-brand-grayText max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+      <p data-aos="fade-up" data-aos-delay="260" class="text-base sm:text-lg md:text-xl text-brand-grayText max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
         Protección Cerámica de Nivel Profesional y restauración exhaustiva. Cuidado personalizado para quienes exigen perfección estética y máxima durabilidad.
       </p>
 
       <!-- Botones de Acción (INCLUYE INSTAGRAM OUTLINE) -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 flex-wrap">
+      <div data-aos="zoom-in" data-aos-delay="380" class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 flex-wrap">
         
         <!-- Botón 1: WhatsApp Principal -->
         <a href="https://wa.me/50663904956?text=Hola%20NOVALUX%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20para%20mi%20veh%C3%ADculo." target="_blank" rel="noopener noreferrer"
@@ -251,16 +292,18 @@
     </div>
 
     <!-- IMAGEN SHOWROOM CON TU FOTO foto1.png -->
-    <div class="relative w-full max-w-5xl mt-14 z-10 px-4">
-      <div class="relative rounded-2xl overflow-hidden border border-brand-cardBorder/60 bg-gradient-to-b from-brand-card to-transparent p-2">
-        <img 
-          src="images/foto1.png" 
-          alt="NOVALUX Detailing Resultados Profesionales" 
-          class="w-full h-64 sm:h-96 md:h-[430px] object-cover rounded-xl shadow-2xl brightness-95 contrast-110"
-          loading="eager"
-          onerror="this.onerror=null; this.src='foto1.png';"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent pointer-events-none"></div>
+    <div data-aos="fade-up" data-aos-delay="520" class="relative w-full max-w-5xl mt-14 z-10 px-4 reveal-wrap">
+      <div data-aos="zoom-in" data-aos-delay="640" class="relative rounded-2xl overflow-hidden border border-brand-cardBorder/60 bg-gradient-to-b from-brand-card to-transparent p-2 transform-gpu will-change-transform">
+      <div class="img-overlay"></div>
+      <img 
+        src="images/foto1.png" 
+        alt="NOVALUX Detailing Resultados Profesionales" 
+        data-animate="impact-img"
+        class="reveal-img w-full h-64 sm:h-96 md:h-[430px] object-cover rounded-xl shadow-2xl brightness-95 contrast-110 transition-transform duration-700 ease-out hover:scale-105 will-change-transform"
+        loading="eager"
+        onerror="this.onerror=null; this.src='foto1.png';"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent pointer-events-none"></div>
         <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-xs sm:text-sm text-brand-grayText">
           <span class="flex items-center gap-2 font-mono text-brand-neon">
             <span class="inline-block w-2 h-2 rounded-full bg-brand-neon"></span>
@@ -274,7 +317,7 @@
   </section>
 
   <!-- ================= SECCIÓN SERVICIOS / PRICING CARDS ================= -->
-  <section id="planes" class="py-24 px-5 sm:px-8 max-w-7xl mx-auto relative z-10">
+  <section id="planes" data-aos="fade-up" data-aos-delay="80" class="py-24 px-5 sm:px-8 max-w-7xl mx-auto relative z-10">
     
     <div class="text-center max-w-3xl mx-auto mb-16">
       <p class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-brand-neon mb-3">
@@ -292,7 +335,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-5xl mx-auto">
       
       <!-- CARD 1: Detallado Completo -->
-      <div class="flex flex-col justify-between rounded-3xl bg-brand-card border border-brand-cardBorder p-8 sm:p-10 hover:border-zinc-700 transition-all duration-300 relative group">
+      <div data-animate="impact" data-tilt class="tilt-card flex flex-col justify-between rounded-3xl bg-brand-card border border-brand-cardBorder p-8 sm:p-10 hover:border-zinc-700 transform-gpu hover:-translate-y-2 transition-all duration-300 relative group">
         <div>
           <!-- Header con Badge & Ícono Minimalista Lucide "car" -->
           <div class="flex items-center justify-between mb-6">
@@ -382,7 +425,7 @@
       </div>
 
       <!-- CARD 2: Cerámico One Evo Certificado (DESTACADA) -->
-      <div class="flex flex-col justify-between rounded-3xl bg-radial-card border-2 border-brand-neon p-8 sm:p-10 shadow-neon-card relative group">
+      <div data-animate="impact" data-tilt class="tilt-card data-animate-impact flex flex-col justify-between rounded-3xl bg-radial-card border-2 border-brand-neon p-8 sm:p-10 shadow-neon-card transform-gpu hover:-translate-y-2 transition-all duration-300 relative group">
         <div class="absolute -top-3.5 right-8">
           <span class="px-4 py-1 rounded-full bg-brand-neon text-black text-xs font-black uppercase tracking-wider shadow-md">
             MÁXIMA PROTECCIÓN
@@ -473,7 +516,7 @@
   </section>
 
   <!-- ================= SECCIÓN "POR QUÉ ELEGIRNOS" ================= -->
-  <section id="por-que-elegirnos" class="py-24 bg-brand-card/40 border-t border-brand-cardBorder relative">
+  <section id="por-que-elegirnos" data-aos="fade-up" data-aos-delay="100" class="py-24 bg-brand-card/40 border-t border-brand-cardBorder relative">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16">
@@ -582,7 +625,7 @@
   </section>
 
   <!-- ================= SECCIÓN: MARCAS CON LAS QUE TRABAJAMOS ================= -->
-  <section id="marcas" class="py-20 bg-[#080809] border-y border-brand-cardBorder relative overflow-hidden">
+  <section id="marcas" data-aos="fade-up" data-aos-delay="120" class="py-20 bg-[#080809] border-y border-brand-cardBorder relative overflow-hidden">
     
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[1px] bg-gradient-to-r from-transparent via-brand-neon/60 to-transparent"></div>
 
@@ -604,7 +647,7 @@
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
         
         <!-- 1. CARPRO -->
-        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+        <div data-aos="fade-up" data-aos-delay="120" class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
           <div class="text-center">
             <div class="h-1 w-12 bg-black mx-auto mb-1 rounded-full group-hover:bg-brand-neon transition-colors"></div>
             <span class="font-black text-2xl sm:text-3xl tracking-wider text-white font-sans">
@@ -614,7 +657,7 @@
         </div>
 
         <!-- 2. GYEON -->
-        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+        <div data-aos="fade-up" data-aos-delay="160" class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
           <div class="text-center">
             <span class="font-black text-3xl sm:text-4xl tracking-tighter text-white group-hover:text-[#413b6b] transition-colors" style="font-family: Impact, sans-serif;">
               GYEON<span class="text-xs align-top font-normal font-sans text-white group-hover:text-[#413b6b]">®</span>
@@ -623,7 +666,7 @@
         </div>
 
         <!-- 3. KOCH CHEMIE -->
-        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+        <div data-aos="fade-up" data-aos-delay="200" class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
           <div class="text-left">
             <span class="font-extrabold text-xl sm:text-2xl tracking-tight text-white leading-none block">
               KochChemie<span class="text-[10px] text-zinc-400 font-normal">®</span>
@@ -635,7 +678,7 @@
         </div>
 
         <!-- 4. P&S DETAIL PRODUCTS -->
-        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+        <div data-aos="fade-up" data-aos-delay="240" class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
           <div class="flex items-center gap-2">
             <div class="relative flex items-center justify-center">
               <div class="px-3 py-1 rounded-md bg-zinc-700 group-hover:bg-[#E31E24] text-white font-black text-lg sm:text-xl tracking-tighter transition-colors shadow-sm">
@@ -650,7 +693,7 @@
         </div>
 
         <!-- 5. SCANGRIP -->
-        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+        <div data-aos="fade-up" data-aos-delay="280" class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
           <div class="text-center">
             <div class="flex items-center justify-center gap-1.5 mb-1.5">
               <div class="w-3.5 h-3.5 rounded-full border-2 border-zinc-400 group-hover:border-[#D12626] border-r-transparent -rotate-45 transition-colors"></div>
@@ -661,7 +704,7 @@
         </div>
 
         <!-- 6. WORK STUFF -->
-        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+        <div data-aos="fade-up" data-aos-delay="320" class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
           <div class="text-center">
             <div class="inline-flex items-center gap-1">
               <span class="font-black text-xl sm:text-2xl tracking-tight text-white uppercase group-hover:text-brand-neon transition-colors">
@@ -682,7 +725,7 @@
   </section>
 
   <!-- ================= BANNER / SHOWCASE INSTAGRAM ================= -->
-  <section id="instagram-showcase" class="py-20 px-5 bg-radial-glow relative overflow-hidden">
+  <section id="instagram-showcase" data-aos="fade-up" data-aos-delay="140" class="py-20 px-5 bg-radial-glow relative overflow-hidden">
     <div class="max-w-5xl mx-auto rounded-3xl bg-brand-card border border-brand-cardBorder hover:border-brand-neon/40 p-8 sm:p-12 text-center relative transition-all duration-300">
       
       <div class="w-16 h-16 rounded-2xl bg-brand-neon/10 border border-brand-neon/30 flex items-center justify-center text-brand-neon mx-auto mb-6 shadow-neon-sm">
@@ -713,7 +756,7 @@
   </section>
 
   <!-- ================= SECCIÓN FAQ (PREGUNTAS FRECUENTES) ================= -->
-  <section id="faq" class="py-24 px-5 sm:px-8 max-w-5xl mx-auto relative z-10">
+  <section id="faq" data-aos="fade-up" data-aos-delay="160" class="py-24 px-5 sm:px-8 max-w-5xl mx-auto relative z-10">
     
     <div class="text-center max-w-3xl mx-auto mb-16">
       <p class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-brand-neon mb-3">
@@ -731,7 +774,7 @@
     <div class="space-y-4">
       
       <!-- FAQ 1 -->
-      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+      <details data-aos="fade-up" data-aos-delay="80" class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
         <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
           <span>¿Dónde se realiza el lavado y detailing?</span>
           <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
@@ -742,7 +785,7 @@
       </details>
 
       <!-- FAQ 2 -->
-      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+      <details data-aos="fade-up" data-aos-delay="120" class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
         <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
           <span>¿Qué cuidados debo tener después de aplicar el cerámico?</span>
           <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
@@ -753,7 +796,7 @@
       </details>
 
       <!-- FAQ 3 (SOLO SINPE MÓVIL) -->
-      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+      <details data-aos="fade-up" data-aos-delay="160" class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
         <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
           <span>¿Cuáles son las formas de pago?</span>
           <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
@@ -764,7 +807,7 @@
       </details>
 
       <!-- FAQ 4 -->
-      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+      <details data-aos="fade-up" data-aos-delay="200" class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
         <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
           <span>¿Necesito agendar cita previa?</span>
           <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
@@ -775,7 +818,7 @@
       </details>
 
       <!-- FAQ 5 -->
-      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+      <details data-aos="fade-up" data-aos-delay="240" class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
         <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
           <span>¿Cuál es la diferencia entre el cerámico incluido en el Detailing y el One Evo Certificado?</span>
           <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
@@ -786,7 +829,7 @@
       </details>
 
       <!-- FAQ 6 -->
-      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+      <details data-aos="fade-up" data-aos-delay="280" class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
         <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
           <span>¿Cuánto tiempo toma el servicio?</span>
           <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
@@ -801,7 +844,7 @@
   </section>
 
   <!-- ================= BANNER CTA DE RESERVA ================= -->
-  <section class="py-20 px-5 relative">
+  <section data-aos="fade-up" data-aos-delay="180" class="py-20 px-5 relative">
     <div class="max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-zinc-900 via-brand-card to-zinc-900 border border-brand-neon/30 p-10 sm:p-14 text-center relative overflow-hidden">
       <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-brand-neon/15 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -823,7 +866,7 @@
   </section>
 
   <!-- ================= FOOTER / CONTACTO ================= -->
-  <footer id="contacto" class="bg-[#070707] border-t border-brand-cardBorder/80 pt-16 pb-12">
+  <footer id="contacto" data-aos="fade-up" data-aos-delay="200" class="bg-[#070707] border-t border-brand-cardBorder/80 pt-16 pb-12">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
@@ -835,6 +878,7 @@
               src="images/logo.png" 
               alt="NOVALUX Logo" 
               class="h-9 w-auto object-contain"
+              loading="lazy" decoding="async"
               onerror="this.onerror=null; this.src='logo.png';"
             />
             <span class="text-2xl font-black tracking-widest text-white">
@@ -909,9 +953,168 @@
   </a>
 
   <!-- ================= JAVASCRIPT ================= -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     // Año dinámico footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Init AOS (animaciones de scroll)
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.AOS) {
+        AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic', offset: 120 });
+      }
+    });
+
+    // Refrescar AOS después de que la página y las imágenes carguen para asegurar que
+    // las animaciones se detecten correctamente (útil para imágenes lazy-loaded)
+    window.addEventListener('load', function() {
+      if (window.AOS) {
+        AOS.refresh();
+      }
+      // cuando una imagen se carga, refrescar AOS para que su animación se dispare
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('load', function() {
+          if (window.AOS) AOS.refresh();
+        }, { once: true });
+      });
+    });
+
+    // Lenis: smooth scrolling
+    try {
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true
+      });
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    } catch (e) {
+      // Lenis no disponible - continuar sin smooth scrolling
+      console.warn('Lenis no inicializado:', e);
+    }
+
+    // Micro-interaction: hero reveal + powerful entrance animations (anime.js)
+    document.addEventListener('DOMContentLoaded', function() {
+      // --- HERO SPLIT & TIMELINE ---
+      const heroTitle = document.getElementById('heroTitle');
+      if (heroTitle && window.anime) {
+        // split into words and wrap spans
+        const raw = heroTitle.innerHTML.trim();
+        // Replace innerHTML but keep line breaks
+        const parts = raw.split(/(\s+)/).map(w => w.replace(/<br\s*\/?>/i, '<br/>'));
+        heroTitle.innerHTML = parts.map(token => {
+          if (token === '<br/>' || /^\s+$/.test(token)) return token;
+          return `<span class=\"word inline-block\">${token}</span>`;
+        }).join('');
+
+        anime.timeline({ delay: 150 })
+          .add({
+            targets: '#heroTitle .word',
+            opacity: [0,1],
+            translateY: [40, 0],
+            rotateX: [18,0],
+            scale: [0.92,1],
+            easing: 'cubicBezier(.2,.9,.2,1)',
+            duration: 900,
+            delay: anime.stagger(80)
+          })
+          .add({
+            targets: '#heroTitle',
+            filter: ['blur(6px)', 'blur(0px)'],
+            duration: 700,
+            easing: 'easeOutCubic'
+          }, '-=600');
+      }
+
+      // --- Parallax radial glow movement (mouse + subtle scroll) ---
+      const heroGlow = document.getElementById('heroGlow');
+      if (heroGlow) {
+        const handleMove = (e) => {
+          const x = (e.clientX / window.innerWidth - 0.5) * 36; // stronger offset
+          const y = (e.clientY / window.innerHeight - 0.5) * 24;
+          heroGlow.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${y}px), 0) scale(1.06)`;
+        };
+        let moveThrottle = null;
+        window.addEventListener('mousemove', (e) => {
+          if (moveThrottle) return;
+          moveThrottle = setTimeout(() => { moveThrottle = null; }, 12);
+          handleMove(e);
+        }, { passive: true });
+
+        window.addEventListener('scroll', () => {
+          const offset = window.scrollY * 0.08;
+          heroGlow.style.top = `calc(33% + ${offset}px)`;
+        }, { passive: true });
+      }
+
+      // --- Image overlay reveal for hero and other images with data-animate="impact-img" ---
+      document.querySelectorAll('[data-animate="impact-img"]').forEach(img => {
+        const wrap = img.closest('.reveal-wrap') || img.parentElement;
+        const overlay = wrap.querySelector('.img-overlay');
+        if (overlay && window.anime) {
+          // when in view, animate overlay to reveal and scale image
+          const io = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                anime.timeline()
+                  .add({ targets: overlay, translateX: ['0%','110%'], duration: 900, easing: 'easeInOutCubic' })
+                  .add({ targets: img, scale: [1.06,1], duration: 1200, easing: 'cubicBezier(.2,.9,.2,1)' }, '-=650');
+                obs.unobserve(img);
+              }
+            });
+          }, { threshold: 0.35 });
+          io.observe(img);
+        }
+      });
+
+      // --- Intersection-driven impact animations (more dramatic) ---
+      const impactObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry, idx) => {
+          const el = entry.target;
+          if (entry.isIntersecting && window.anime) {
+            anime({
+              targets: el,
+              opacity: [0,1],
+              translateY: [60,0],
+              scale: [0.96,1],
+              rotateX: [12,0],
+              duration: 900,
+              easing: 'cubicBezier(.2,.9,.2,1)',
+              delay: el.dataset.delay ? parseInt(el.dataset.delay,10) : idx * 80
+            });
+            obs.unobserve(el);
+          }
+        });
+      }, { threshold: 0.18 });
+
+      document.querySelectorAll('[data-animate="impact"]').forEach(el => impactObserver.observe(el));
+
+      // --- Tilt interaction for elements with data-tilt ---
+      document.querySelectorAll('[data-tilt]').forEach(card => {
+        const rectize = (e) => card.getBoundingClientRect();
+        const handleMove = (e) => {
+          const r = rectize();
+          const px = (e.clientX - r.left) / r.width;
+          const py = (e.clientY - r.top) / r.height;
+          const rx = (py - 0.5) * 12; // rotateX
+          const ry = (px - 0.5) * -16; // rotateY
+          card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0) scale(1.01)`;
+          card.style.boxShadow = `0 40px 80px rgba(2,2,2,0.55), 0 0 60px rgba(196,241,53,0.14)`;
+        };
+        const reset = () => {
+          card.style.transform = '';
+          card.style.boxShadow = '';
+        };
+        card.addEventListener('mousemove', handleMove, { passive: true });
+        card.addEventListener('mouseleave', reset);
+        // small entrance pop
+        if (window.anime) anime({ targets: card, opacity: [0,1], translateY: [30,0], duration: 800, easing: 'easeOutCubic' });
+      });
+
+    });
 
     // Toggle Menú Móvil
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -933,7 +1136,7 @@
       }
     }
 
-    mobileMenuBtn.addEventListener('click', toggleMenu);
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
 
     // Cerrar menú al hacer clic en cualquier link
     mobileNavLinks.forEach(link => {
@@ -944,6 +1147,91 @@
       });
     });
   </script>
+    <script>
+      // Fallback fixer: repara el título del hero si quedó renderizado como texto (por la manipulación anterior)
+      document.addEventListener('DOMContentLoaded', function(){
+        try {
+          const heroTitle = document.getElementById('heroTitle');
+          if (!heroTitle) return;
 
-</body>
+          const shownAsRaw = /class=/.test(heroTitle.textContent || '');
+          // Solo ejecutar si parece haber quedado texto plano o si aún no se envolvieron palabras
+          const needsFix = shownAsRaw || heroTitle.querySelectorAll('.word').length === 0;
+          if (!needsFix) return;
+
+          // Restaurar el contenido original (mismo markup que antes de la manipulación)
+          heroTitle.innerHTML = 'Detailing Automotriz <br class="hidden sm:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-white to-brand-neon">Premium</span>';
+
+          // Ahora envolver palabras de forma segura preservando elementos existentes
+          const nodes = Array.from(heroTitle.childNodes);
+          const frag = document.createDocumentFragment();
+          nodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              const tokens = node.textContent.split(/(\s+)/);
+              tokens.forEach(tok => {
+                if (/^\s+$/.test(tok)) {
+                  frag.appendChild(document.createTextNode(tok));
+                } else if (tok === '') {
+                  // skip
+                } else {
+                  const span = document.createElement('span');
+                  span.className = 'word inline-block';
+                  span.textContent = tok;
+                  frag.appendChild(span);
+                }
+              });
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.tagName && node.tagName.toLowerCase() === 'br') {
+                frag.appendChild(document.createElement('br'));
+              } else {
+                const clone = node.cloneNode(true);
+                const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT, null, false);
+                const textNodes = [];
+                while (walker.nextNode()) textNodes.push(walker.currentNode);
+                textNodes.forEach(tn => {
+                  const toks = tn.textContent.split(/(\s+)/);
+                  const parent = tn.parentNode;
+                  toks.forEach(tk => {
+                    if (/^\s+$/.test(tk)) {
+                      parent.insertBefore(document.createTextNode(tk), tn);
+                    } else if (tk === '') {
+                      // skip
+                    } else {
+                      const s = document.createElement('span');
+                      s.className = 'word inline-block';
+                      s.textContent = tk;
+                      parent.insertBefore(s, tn);
+                    }
+                  });
+                  parent.removeChild(tn);
+                });
+                frag.appendChild(clone);
+              }
+            }
+          });
+          heroTitle.innerHTML = '';
+          heroTitle.appendChild(frag);
+
+          // Re-animar con anime.js (si está disponible)
+          if (window.anime) {
+            anime.timeline({ delay: 120 })
+              .add({
+                targets: '#heroTitle .word',
+                opacity: [0,1],
+                translateY: [36,0],
+                rotateX: [14,0],
+                scale: [0.95,1],
+                easing: 'cubicBezier(.2,.9,.2,1)',
+                duration: 700,
+                delay: anime.stagger(60)
+              });
+          }
+        } catch (err) {
+          // Si algo falla, no romper la página
+          console.warn('Hero fixer failed:', err);
+        }
+      });
+    </script>
+
+  </body>
 </html>

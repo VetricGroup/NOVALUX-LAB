@@ -1001,32 +1001,22 @@
       // --- HERO SPLIT & TIMELINE ---
       const heroTitle = document.getElementById('heroTitle');
       if (heroTitle && window.anime) {
-        // split into words and wrap spans
-        const raw = heroTitle.innerHTML.trim();
-        // Replace innerHTML but keep line breaks
-        const parts = raw.split(/(\s+)/).map(w => w.replace(/<br\s*\/?>/i, '<br/>'));
-        heroTitle.innerHTML = parts.map(token => {
-          if (token === '<br/>' || /^\s+$/.test(token)) return token;
-          return `<span class=\"word inline-block\">${token}</span>`;
-        }).join('');
-
-        anime.timeline({ delay: 150 })
+        const titleSpan = heroTitle.querySelector('span');
+        anime.timeline({ delay: 120 })
           .add({
-            targets: '#heroTitle .word',
-            opacity: [0,1],
-            translateY: [40, 0],
-            rotateX: [18,0],
-            scale: [0.92,1],
-            easing: 'cubicBezier(.2,.9,.2,1)',
-            duration: 900,
-            delay: anime.stagger(80)
-          })
-          .add({
-            targets: '#heroTitle',
-            filter: ['blur(6px)', 'blur(0px)'],
+            targets: heroTitle,
+            opacity: [0, 1],
+            translateY: [30, 0],
             duration: 700,
             easing: 'easeOutCubic'
-          }, '-=600');
+          })
+          .add({
+            targets: titleSpan || heroTitle,
+            opacity: [0, 1],
+            translateY: [18, 0],
+            duration: 700,
+            easing: 'easeOutCubic'
+          }, '-=450');
       }
 
       // --- Parallax radial glow movement (mouse + subtle scroll) ---
@@ -1147,91 +1137,6 @@
       });
     });
   </script>
-    <script>
-      // Fallback fixer: repara el título del hero si quedó renderizado como texto (por la manipulación anterior)
-      document.addEventListener('DOMContentLoaded', function(){
-        try {
-          const heroTitle = document.getElementById('heroTitle');
-          if (!heroTitle) return;
-
-          const shownAsRaw = /class=/.test(heroTitle.textContent || '');
-          // Solo ejecutar si parece haber quedado texto plano o si aún no se envolvieron palabras
-          const needsFix = shownAsRaw || heroTitle.querySelectorAll('.word').length === 0;
-          if (!needsFix) return;
-
-          // Restaurar el contenido original (mismo markup que antes de la manipulación)
-          heroTitle.innerHTML = 'Detailing Automotriz <br class="hidden sm:block" /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-white to-brand-neon">Premium</span>';
-
-          // Ahora envolver palabras de forma segura preservando elementos existentes
-          const nodes = Array.from(heroTitle.childNodes);
-          const frag = document.createDocumentFragment();
-          nodes.forEach(node => {
-            if (node.nodeType === Node.TEXT_NODE) {
-              const tokens = node.textContent.split(/(\s+)/);
-              tokens.forEach(tok => {
-                if (/^\s+$/.test(tok)) {
-                  frag.appendChild(document.createTextNode(tok));
-                } else if (tok === '') {
-                  // skip
-                } else {
-                  const span = document.createElement('span');
-                  span.className = 'word inline-block';
-                  span.textContent = tok;
-                  frag.appendChild(span);
-                }
-              });
-            } else if (node.nodeType === Node.ELEMENT_NODE) {
-              if (node.tagName && node.tagName.toLowerCase() === 'br') {
-                frag.appendChild(document.createElement('br'));
-              } else {
-                const clone = node.cloneNode(true);
-                const walker = document.createTreeWalker(clone, NodeFilter.SHOW_TEXT, null, false);
-                const textNodes = [];
-                while (walker.nextNode()) textNodes.push(walker.currentNode);
-                textNodes.forEach(tn => {
-                  const toks = tn.textContent.split(/(\s+)/);
-                  const parent = tn.parentNode;
-                  toks.forEach(tk => {
-                    if (/^\s+$/.test(tk)) {
-                      parent.insertBefore(document.createTextNode(tk), tn);
-                    } else if (tk === '') {
-                      // skip
-                    } else {
-                      const s = document.createElement('span');
-                      s.className = 'word inline-block';
-                      s.textContent = tk;
-                      parent.insertBefore(s, tn);
-                    }
-                  });
-                  parent.removeChild(tn);
-                });
-                frag.appendChild(clone);
-              }
-            }
-          });
-          heroTitle.innerHTML = '';
-          heroTitle.appendChild(frag);
-
-          // Re-animar con anime.js (si está disponible)
-          if (window.anime) {
-            anime.timeline({ delay: 120 })
-              .add({
-                targets: '#heroTitle .word',
-                opacity: [0,1],
-                translateY: [36,0],
-                rotateX: [14,0],
-                scale: [0.95,1],
-                easing: 'cubicBezier(.2,.9,.2,1)',
-                duration: 700,
-                delay: anime.stagger(60)
-              });
-          }
-        } catch (err) {
-          // Si algo falla, no romper la página
-          console.warn('Hero fixer failed:', err);
-        }
-      });
-    </script>
 
   </body>
 </html>

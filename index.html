@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOVALUX® — Detailing Automotriz Premium & Cerámico</title>
+  <meta name="description" content="Detailing Automotriz Premium y Protección Cerámica Q2 One Evo en Costa Rica. Atención solo con cita previa." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo.png" />
+
+  <!-- Open Graph / Meta Tags para WhatsApp, Facebook e Instagram -->
+  <meta property="og:title" content="NOVALUX® | Detailing Automotriz Premium & Cerámico" />
+  <meta property="og:description" content="Detailing Automotriz Premium y Protección Cerámica Q2 One Evo en Costa Rica. Atención solo con cita previa." />
+  <meta property="og:image" content="images/foto1.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NOVALUX® | Detailing Automotriz Premium & Cerámico" />
+  <meta name="twitter:description" content="Detailing Automotriz Premium y Protección Cerámica Q2 One Evo en Costa Rica. Atención solo con cita previa." />
+  <meta name="twitter:image" content="images/foto1.png" />
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#0A0A0A',
+              card: '#121214',
+              cardBorder: '#222226',
+              neon: '#C4F135',
+              neonDark: '#9ec424',
+              neonMuted: 'rgba(196, 241, 53, 0.12)',
+              grayText: '#9CA3AF',
+              grayLight: '#E5E7EB'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            'neon-sm': '0 0 15px rgba(196, 241, 53, 0.25)',
+            'neon-lg': '0 0 35px rgba(196, 241, 53, 0.35)',
+            'neon-card': '0 0 30px rgba(196, 241, 53, 0.18)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0A0A0A;
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .bg-radial-glow {
+      background: radial-gradient(circle at 50% 15%, rgba(196, 241, 53, 0.12) 0%, rgba(10, 10, 10, 0) 65%);
+    }
+
+    .bg-radial-card {
+      background: radial-gradient(circle at top right, rgba(196, 241, 53, 0.08) 0%, rgba(18, 18, 20, 1) 60%);
+    }
+
+    /* Efecto logos monocromáticos a color */
+    .brand-logo-card {
+      transition: all 0.35s ease;
+      filter: grayscale(100%) brightness(140%) opacity(0.75);
+    }
+    .brand-logo-card:hover {
+      filter: grayscale(0%) brightness(100%) opacity(1);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(196, 241, 53, 0.15);
+      border-color: rgba(196, 241, 53, 0.5);
+    }
+
+    /* Estilos del Acordeón FAQ */
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+    details summary {
+      list-style: none;
+    }
+    details[open] .faq-icon {
+      transform: rotate(45deg);
+    }
+    details[open] {
+      border-color: rgba(196, 241, 53, 0.4);
+      background-color: #161619;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-brand-neon selection:text-black">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#0A0A0A]/90 backdrop-blur-md border-b border-brand-cardBorder/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- LOGO -->
+      <a href="#" class="flex items-center gap-3 group">
+        <img 
+          src="images/logo.png" 
+          alt="NOVALUX Logo" 
+          class="h-9 sm:h-11 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+          onerror="this.onerror=null; this.src='logo.png';"
+        />
+        <div class="flex flex-col">
+          <span class="text-lg sm:text-2xl font-black tracking-widest text-white leading-none">
+            NOVALUX<span class="text-brand-neon text-xs font-bold align-top">®</span>
+          </span>
+          <span class="text-[9px] sm:text-[10px] tracking-[0.25em] text-brand-grayText uppercase font-semibold">Detailing Lab</span>
+        </div>
+      </a>
+
+      <!-- NAV LINKS (DESKTOP) -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-brand-grayText">
+        <a href="#planes" class="hover:text-brand-neon transition-colors">Planes y Precios</a>
+        <a href="#por-que-elegirnos" class="hover:text-brand-neon transition-colors">Por Qué Elegirnos</a>
+        <a href="#marcas" class="hover:text-brand-neon transition-colors">Marcas</a>
+        <a href="#instagram-showcase" class="hover:text-brand-neon transition-colors">Instagram</a>
+        <a href="#faq" class="hover:text-brand-neon transition-colors">Preguntas Frecuentes</a>
+        <a href="#contacto" class="hover:text-brand-neon transition-colors">Contacto</a>
+      </nav>
+
+      <!-- ACCIONES DERECHA -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- CTA WHATSAPP TOP -->
+        <a href="https://wa.me/50663904956" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-brand-neon text-black font-bold text-xs sm:text-sm tracking-wide hover:bg-[#b0dc28] hover:shadow-neon-sm hover:scale-[1.02] transition-all duration-300">
+          <svg class="w-3.5 sm:w-4 h-3.5 sm:h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span>Agendar</span>
+        </a>
+
+        <!-- BOTÓN HAMBURGUESA MÓVIL (Lucide Menu / Línea Fina) -->
+        <button id="mobileMenuBtn" aria-label="Abrir Menú de Navegación"
+                class="md:hidden w-10 h-10 rounded-xl bg-brand-card border border-brand-cardBorder flex items-center justify-center text-white hover:text-brand-neon hover:border-brand-neon/50 transition-colors">
+          <svg id="menuIconClosed" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <line x1="4" x2="20" y1="6" y2="6"/>
+            <line x1="4" x2="20" y1="12" y2="12"/>
+            <line x1="4" x2="20" y1="18" y2="18"/>
+          </svg>
+          <svg id="menuIconOpen" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- PANEL MENÚ MÓVIL DESPLEGABLE -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-brand-cardBorder bg-[#0A0A0A]/95 backdrop-blur-xl px-5 py-6 space-y-4">
+      <nav class="flex flex-col space-y-3 text-base font-semibold">
+        <a href="#planes" class="mobile-nav-link text-brand-grayLight hover:text-brand-neon py-2 border-b border-zinc-800/50 transition-colors">Planes y Precios</a>
+        <a href="#por-que-elegirnos" class="mobile-nav-link text-brand-grayLight hover:text-brand-neon py-2 border-b border-zinc-800/50 transition-colors">Por Qué Elegirnos</a>
+        <a href="#marcas" class="mobile-nav-link text-brand-grayLight hover:text-brand-neon py-2 border-b border-zinc-800/50 transition-colors">Marcas Profesionales</a>
+        <a href="#instagram-showcase" class="mobile-nav-link text-brand-grayLight hover:text-brand-neon py-2 border-b border-zinc-800/50 transition-colors flex items-center justify-between">
+          <span>Ver Fotos en Instagram</span>
+          <span class="text-xs text-brand-neon font-normal">@novalux.cr ↗</span>
+        </a>
+        <a href="#faq" class="mobile-nav-link text-brand-grayLight hover:text-brand-neon py-2 border-b border-zinc-800/50 transition-colors">Preguntas Frecuentes</a>
+        <a href="#contacto" class="mobile-nav-link text-brand-grayLight hover:text-brand-neon py-2 transition-colors">Contacto</a>
+      </nav>
+
+      <div class="pt-2 flex flex-col gap-2.5">
+        <a href="https://wa.me/50663904956" target="_blank" rel="noopener noreferrer"
+           class="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-brand-neon text-black font-extrabold text-sm uppercase tracking-wide">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span>Escribir por WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="relative min-h-[92vh] pt-32 pb-16 flex flex-col justify-center items-center px-5 bg-radial-glow overflow-hidden">
+    
+    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-brand-neon/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center z-10 relative">
+      
+      <!-- Insignia Superior -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-card border border-brand-neon/40 text-brand-neon text-xs font-semibold tracking-wider uppercase mb-6 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-brand-neon animate-ping"></span>
+        Interior y Exterior Detailing — Atención solo con cita previa
+      </div>
+
+      <!-- Título Principal -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6 uppercase leading-tight">
+        Detailing Automotriz <br class="hidden sm:block" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-white to-brand-neon">
+          Premium
+        </span>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="text-base sm:text-lg md:text-xl text-brand-grayText max-w-2xl mx-auto mb-10 font-normal leading-relaxed">
+        Protección Cerámica de Nivel Profesional y restauración exhaustiva. Cuidado personalizado para quienes exigen perfección estética y máxima durabilidad.
+      </p>
+
+      <!-- Botones de Acción (INCLUYE INSTAGRAM OUTLINE) -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4 flex-wrap">
+        
+        <!-- Botón 1: WhatsApp Principal -->
+        <a href="https://wa.me/50663904956?text=Hola%20NOVALUX%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20para%20mi%20veh%C3%ADculo." target="_blank" rel="noopener noreferrer"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-brand-neon text-black font-extrabold text-sm tracking-wider uppercase hover:bg-[#b0dc28] hover:shadow-neon-lg hover:scale-105 transition-all duration-300">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+          <span>Reservar por WhatsApp</span>
+        </a>
+
+        <!-- Botón 2: Ver Planes -->
+        <a href="#planes"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-brand-card border border-brand-cardBorder hover:border-brand-neon/60 text-white font-semibold text-sm tracking-wide transition-all duration-300 hover:text-brand-neon">
+          <span>Ver Planes y Precios</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </a>
+
+        <!-- Botón 3: Ver Resultados en Instagram (OUTLINE) -->
+        <a href="https://www.instagram.com/novalux.cr" target="_blank" rel="noopener noreferrer"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-transparent border border-zinc-700 hover:border-brand-neon text-brand-grayLight hover:text-white font-semibold text-sm tracking-wide transition-all duration-300 group">
+          <svg class="w-4 h-4 text-brand-neon group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span>Ver Resultados en Instagram</span>
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- IMAGEN SHOWROOM CON TU FOTO foto1.png -->
+    <div class="relative w-full max-w-5xl mt-14 z-10 px-4">
+      <div class="relative rounded-2xl overflow-hidden border border-brand-cardBorder/60 bg-gradient-to-b from-brand-card to-transparent p-2">
+        <img 
+          src="images/foto1.png" 
+          alt="NOVALUX Detailing Resultados Profesionales" 
+          class="w-full h-64 sm:h-96 md:h-[430px] object-cover rounded-xl shadow-2xl brightness-95 contrast-110"
+          loading="eager"
+          onerror="this.onerror=null; this.src='foto1.png';"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-xs sm:text-sm text-brand-grayText">
+          <span class="flex items-center gap-2 font-mono text-brand-neon">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-neon"></span>
+            RESULTADOS PROFESIONALES DE ALTO BRILLO
+          </span>
+          <span class="hidden sm:inline-block font-mono text-zinc-400">SAN JOSÉ, COSTA RICA</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ================= SECCIÓN SERVICIOS / PRICING CARDS ================= -->
+  <section id="planes" class="py-24 px-5 sm:px-8 max-w-7xl mx-auto relative z-10">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <p class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-brand-neon mb-3">
+        Transparencia y Excelencia
+      </p>
+      <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mb-4">
+        Planes y Servicios
+      </h2>
+      <p class="text-brand-grayText text-base sm:text-lg">
+        Selecciona el nivel de cuidado y restauración que tu vehículo necesita. Precios fijos y transparentes.
+      </p>
+    </div>
+
+    <!-- GRID DE 2 TARJETAS -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-5xl mx-auto">
+      
+      <!-- CARD 1: Detallado Completo -->
+      <div class="flex flex-col justify-between rounded-3xl bg-brand-card border border-brand-cardBorder p-8 sm:p-10 hover:border-zinc-700 transition-all duration-300 relative group">
+        <div>
+          <!-- Header con Badge & Ícono Minimalista Lucide "car" -->
+          <div class="flex items-center justify-between mb-6">
+            <span class="px-4 py-1 rounded-full bg-zinc-800 text-brand-grayLight text-xs font-bold uppercase tracking-wider border border-zinc-700">
+              Personalizado
+            </span>
+            <!-- ÍCONO LUCIDE: car (stroke-width 1.5) -->
+            <div class="w-12 h-12 rounded-2xl bg-brand-neon/10 border border-brand-neon/30 flex items-center justify-center text-brand-neon">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9L2 12v4c0 .6.4 1 1 1h2"/>
+                <circle cx="7" cy="17" r="2"/>
+                <path d="M9 17h6"/>
+                <circle cx="17" cy="17" r="2"/>
+              </svg>
+            </div>
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">
+            Detallado Completo
+          </h3>
+          <p class="text-brand-grayText text-sm mb-6 leading-relaxed">
+            Detailing completo y personalizado, adaptado a las necesidades específicas de cada vehículo.
+          </p>
+
+          <div class="mb-8 pb-8 border-b border-zinc-800/80">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">₡26.500</span>
+              <span class="text-brand-grayText text-sm font-medium">/ precio final</span>
+            </div>
+            <p class="text-xs text-brand-neon/80 mt-1 font-mono">Sin costos ocultos ni sorpresas</p>
+          </div>
+
+          <ul class="space-y-3.5 mb-10 text-sm text-brand-grayLight">
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span><strong>Descontaminación interior profunda</strong> (bacterias, manchas y suciedad acumulada)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Tratamiento especializado para cuero</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span><strong>100% personalizado</strong> según indicaciones del cliente</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Descontaminación de aros (elimina grasa acumulada)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Restauración de guardabarros</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span><strong>Lavado exterior en 4 etapas</strong> (prelavado, pH neutro, shampoo pH neutro y shampoo anti-manchas)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span class="text-white font-medium">Recubrimiento cerámico incluido (protección hasta 2 meses)</span>
+            </li>
+          </ul>
+        </div>
+
+        <a href="https://wa.me/50663904956?text=Hola%2C%20quiero%20reservar%20el%20plan%20Detallado%20Completo%20(%E2%82%A126.500)%20en%20NOVALUX." 
+           target="_blank" rel="noopener noreferrer"
+           class="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-2xl bg-zinc-900 border border-zinc-700 hover:border-brand-neon hover:text-brand-neon text-white font-bold text-sm tracking-wide uppercase transition-all duration-300">
+          <span>Reservar por WhatsApp</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- CARD 2: Cerámico One Evo Certificado (DESTACADA) -->
+      <div class="flex flex-col justify-between rounded-3xl bg-radial-card border-2 border-brand-neon p-8 sm:p-10 shadow-neon-card relative group">
+        <div class="absolute -top-3.5 right-8">
+          <span class="px-4 py-1 rounded-full bg-brand-neon text-black text-xs font-black uppercase tracking-wider shadow-md">
+            MÁXIMA PROTECCIÓN
+          </span>
+        </div>
+
+        <div>
+          <!-- Header con Badge & Ícono Minimalista Lucide "shield" -->
+          <div class="flex items-center justify-between mb-6">
+            <span class="px-4 py-1 rounded-full bg-brand-neon/20 text-brand-neon text-xs font-extrabold uppercase tracking-wider border border-brand-neon/40">
+              Premium
+            </span>
+            <!-- ÍCONO LUCIDE: shield (stroke-width 1.5) -->
+            <div class="w-12 h-12 rounded-2xl bg-brand-neon border border-brand-neon flex items-center justify-center text-black shadow-neon-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+          </div>
+
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+            Cerámico One Evo Certificado
+          </h3>
+          <p class="text-brand-grayLight text-sm mb-6 leading-relaxed">
+            Protección cerámica de grado superior para quienes buscan durabilidad y resultados de largo plazo.
+          </p>
+
+          <div class="mb-8 pb-8 border-b border-brand-neon/20">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl sm:text-5xl font-black text-brand-neon tracking-tight">₡95.990</span>
+              <span class="text-brand-grayLight text-sm font-medium">/ precio fijo</span>
+            </div>
+            <p class="text-xs text-white/90 mt-1 font-mono">Inversión de grado profesional garantizada</p>
+          </div>
+
+          <ul class="space-y-3.5 mb-10 text-sm text-white">
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span class="font-bold text-brand-neon">Certificación oficial del recubrimiento</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span><strong>Mayor durabilidad y protección</strong> que el cerámico estándar</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Acabado con <strong>brillo profundo superior</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Aplicación de aproximadamente <strong>1 día completo</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span>Incluye <strong>descontaminación y preparación completa</strong> antes de aplicar</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-brand-neon shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </span>
+              <span class="text-brand-neon font-semibold">Ideal para protección de largo plazo</span>
+            </li>
+          </ul>
+        </div>
+
+        <a href="https://wa.me/50663904956?text=Hola%2C%20quiero%20reservar%20el%20servicio%20Cer%C3%A1mico%20One%20Evo%20Certificado%20(%E2%82%A195.990)%20en%20NOVALUX." 
+           target="_blank" rel="noopener noreferrer"
+           class="w-full inline-flex items-center justify-center gap-3 py-4 px-6 rounded-2xl bg-brand-neon text-black font-black text-sm tracking-wider uppercase hover:bg-[#b0dc28] hover:shadow-neon-lg hover:scale-[1.02] transition-all duration-300">
+          <span>Reservar por WhatsApp</span>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= SECCIÓN "POR QUÉ ELEGIRNOS" ================= -->
+  <section id="por-que-elegirnos" class="py-24 bg-brand-card/40 border-t border-brand-cardBorder relative">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <p class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-brand-neon mb-3">
+          Estándar de Nivel Profesional
+        </p>
+        <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mb-4">
+          Por Qué Elegirnos
+        </h2>
+        <p class="text-brand-grayText text-base">
+          Cuidado automotriz especializado bajo los más estrictos estándares de detalle y protección.
+        </p>
+      </div>
+
+      <!-- Grid de 4 Columnas con Lucide Icons Minimalistas (stroke-width 1.5) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Columna 1: ÍCONO LUCIDE "sliders-horizontal" -->
+        <div class="p-8 rounded-3xl bg-brand-card border border-brand-cardBorder hover:border-brand-neon/60 transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-brand-neon/10 border border-brand-neon/30 flex items-center justify-center text-brand-neon mb-6 group-hover:bg-brand-neon group-hover:text-black transition-all duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <line x1="21" x2="14" y1="4" y2="4"/>
+                <line x1="10" x2="3" y1="4" y2="4"/>
+                <line x1="21" x2="12" y1="12" y2="12"/>
+                <line x1="8" x2="3" y1="12" y2="12"/>
+                <line x1="21" x2="16" y1="20" y2="20"/>
+                <line x1="12" x2="3" y1="20" y2="20"/>
+                <line x1="14" x2="14" y1="2" y2="6"/>
+                <line x1="8" x2="8" y1="10" y2="14"/>
+                <line x1="16" x2="16" y1="18" y2="22"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3">
+              Servicio 100% Personalizado
+            </h3>
+            <p class="text-brand-grayText text-sm leading-relaxed">
+              Adaptamos cada detailing a las necesidades específicas de tu vehículo, según lo que tú nos indiques.
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna 2: ÍCONO LUCIDE "sparkles" (versión fina) -->
+        <div class="p-8 rounded-3xl bg-brand-card border border-brand-cardBorder hover:border-brand-neon/60 transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-brand-neon/10 border border-brand-neon/30 flex items-center justify-center text-brand-neon mb-6 group-hover:bg-brand-neon group-hover:text-black transition-all duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                <path d="M5 3v4"/>
+                <path d="M19 17v4"/>
+                <path d="M3 5h4"/>
+                <path d="M17 19h4"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3">
+              Productos Premium
+            </h3>
+            <p class="text-brand-grayText text-sm leading-relaxed">
+              Trabajamos con cerámico <strong class="text-white">Q2 One Evo</strong>, uno de los productos de mayor calidad y durabilidad del mercado.
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna 3: ÍCONO LUCIDE "shield-check" -->
+        <div class="p-8 rounded-3xl bg-brand-card border border-brand-cardBorder hover:border-brand-neon/60 transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-brand-neon/10 border border-brand-neon/30 flex items-center justify-center text-brand-neon mb-6 group-hover:bg-brand-neon group-hover:text-black transition-all duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3">
+              Protección Certificada
+            </h3>
+            <p class="text-brand-grayText text-sm leading-relaxed">
+              Nuestro cerámico One Evo cuenta con certificación oficial, garantizando protección real y duradera.
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna 4: ÍCONO LUCIDE "calendar-check" -->
+        <div class="p-8 rounded-3xl bg-brand-card border border-brand-cardBorder hover:border-brand-neon/60 transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-brand-neon/10 border border-brand-neon/30 flex items-center justify-center text-brand-neon mb-6 group-hover:bg-brand-neon group-hover:text-black transition-all duration-300">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <rect width="18" height="18" x="3" y="4" rx="2" ry="2"/>
+                <line x1="16" x2="16" y1="2" y2="6"/>
+                <line x1="8" x2="8" y1="2" y2="6"/>
+                <line x1="3" x2="21" y1="10" y2="10"/>
+                <path d="m9 16 2 2 4-4"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3">
+              Atención con Cita Previa
+            </h3>
+            <p class="text-brand-grayText text-sm leading-relaxed">
+              Cada vehículo recibe el tiempo y cuidado que merece, sin apuros ni trabajos a medias.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN: MARCAS CON LAS QUE TRABAJAMOS ================= -->
+  <section id="marcas" class="py-20 bg-[#080809] border-y border-brand-cardBorder relative overflow-hidden">
+    
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[1px] bg-gradient-to-r from-transparent via-brand-neon/60 to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <p class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-brand-neon mb-2">
+          Insumos de Grado Mundial
+        </p>
+        <h2 class="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight">
+          Trabajamos con las mejores marcas del mercado
+        </h2>
+        <p class="text-brand-grayText text-xs sm:text-sm mt-2">
+          Productos de calidad profesional que garantizan resultados superiores y protección duradera.
+        </p>
+      </div>
+
+      <!-- GRID DE MARCAS (3 columnas x 2 filas en PC / 2 columnas en Móvil) -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
+        
+        <!-- 1. CARPRO -->
+        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+          <div class="text-center">
+            <div class="h-1 w-12 bg-black mx-auto mb-1 rounded-full group-hover:bg-brand-neon transition-colors"></div>
+            <span class="font-black text-2xl sm:text-3xl tracking-wider text-white font-sans">
+              CARPRO<span class="text-[10px] align-top font-bold">™</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- 2. GYEON -->
+        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+          <div class="text-center">
+            <span class="font-black text-3xl sm:text-4xl tracking-tighter text-white group-hover:text-[#413b6b] transition-colors" style="font-family: Impact, sans-serif;">
+              GYEON<span class="text-xs align-top font-normal font-sans text-white group-hover:text-[#413b6b]">®</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- 3. KOCH CHEMIE -->
+        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+          <div class="text-left">
+            <span class="font-extrabold text-xl sm:text-2xl tracking-tight text-white leading-none block">
+              KochChemie<span class="text-[10px] text-zinc-400 font-normal">®</span>
+            </span>
+            <span class="text-[9px] sm:text-[10px] font-bold text-zinc-400 tracking-wider block mt-0.5 group-hover:text-white transition-colors">
+              ExcellenceForExperts.
+            </span>
+          </div>
+        </div>
+
+        <!-- 4. P&S DETAIL PRODUCTS -->
+        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+          <div class="flex items-center gap-2">
+            <div class="relative flex items-center justify-center">
+              <div class="px-3 py-1 rounded-md bg-zinc-700 group-hover:bg-[#E31E24] text-white font-black text-lg sm:text-xl tracking-tighter transition-colors shadow-sm">
+                P&S
+              </div>
+            </div>
+            <div class="text-left hidden sm:block">
+              <span class="text-[9px] uppercase tracking-widest text-zinc-400 block font-bold leading-tight group-hover:text-white">Detail</span>
+              <span class="text-[9px] uppercase tracking-widest text-zinc-400 block font-bold leading-tight group-hover:text-white">Products</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. SCANGRIP -->
+        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+          <div class="text-center">
+            <div class="flex items-center justify-center gap-1.5 mb-1.5">
+              <div class="w-3.5 h-3.5 rounded-full border-2 border-zinc-400 group-hover:border-[#D12626] border-r-transparent -rotate-45 transition-colors"></div>
+              <span class="font-black text-lg sm:text-2xl tracking-widest text-white">SCANGRIP</span>
+            </div>
+            <div class="h-1.5 w-28 mx-auto rounded-sm overflow-hidden flex bg-zinc-700 group-hover:bg-gradient-to-r group-hover:from-red-500 group-hover:via-yellow-400 group-hover:to-blue-500 transition-all"></div>
+          </div>
+        </div>
+
+        <!-- 6. WORK STUFF -->
+        <div class="brand-logo-card flex items-center justify-center p-6 sm:p-8 rounded-2xl bg-brand-card border border-brand-cardBorder h-28 sm:h-32 group">
+          <div class="text-center">
+            <div class="inline-flex items-center gap-1">
+              <span class="font-black text-xl sm:text-2xl tracking-tight text-white uppercase group-hover:text-brand-neon transition-colors">
+                WORK STUFF
+              </span>
+            </div>
+            <span class="text-[9px] tracking-[0.2em] text-zinc-400 block font-semibold uppercase group-hover:text-white transition-colors">
+              Detailing Equipment
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-[1px] bg-gradient-to-r from-transparent via-brand-neon/60 to-transparent"></div>
+  </section>
+
+  <!-- ================= BANNER / SHOWCASE INSTAGRAM ================= -->
+  <section id="instagram-showcase" class="py-20 px-5 bg-radial-glow relative overflow-hidden">
+    <div class="max-w-5xl mx-auto rounded-3xl bg-brand-card border border-brand-cardBorder hover:border-brand-neon/40 p-8 sm:p-12 text-center relative transition-all duration-300">
+      
+      <div class="w-16 h-16 rounded-2xl bg-brand-neon/10 border border-brand-neon/30 flex items-center justify-center text-brand-neon mx-auto mb-6 shadow-neon-sm">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </div>
+
+      <p class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-brand-neon mb-2">
+        Galería de Transformaciones
+      </p>
+      <h3 class="text-2xl sm:text-4xl font-extrabold text-white uppercase mb-4 tracking-tight">
+        Mira nuestros trabajos terminados y antes/después
+      </h3>
+      <p class="text-brand-grayText text-sm sm:text-base max-w-xl mx-auto mb-8">
+        Publicamos historias diarias, procesos de descontaminación profunda y aplicaciones cerámicas de alta definición.
+      </p>
+
+      <a href="https://www.instagram.com/novalux.cr" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-transparent border-2 border-brand-neon text-brand-neon hover:bg-brand-neon hover:text-black font-extrabold text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-neon-sm">
+        <span>Seguir @novalux.cr</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        </svg>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ================= SECCIÓN FAQ (PREGUNTAS FRECUENTES) ================= -->
+  <section id="faq" class="py-24 px-5 sm:px-8 max-w-5xl mx-auto relative z-10">
+    
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <p class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-brand-neon mb-3">
+        Resolvemos tus dudas
+      </p>
+      <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mb-4">
+        Preguntas Frecuentes
+      </h2>
+      <p class="text-brand-grayText text-base">
+        Todo lo que necesitas saber antes de traer tu vehículo a NOVALUX®.
+      </p>
+    </div>
+
+    <!-- Acordeones FAQ -->
+    <div class="space-y-4">
+      
+      <!-- FAQ 1 -->
+      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
+          <span>¿Dónde se realiza el lavado y detailing?</span>
+          <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
+        </summary>
+        <p class="mt-4 text-brand-grayText text-sm sm:text-base leading-relaxed border-t border-brand-cardBorder/60 pt-4">
+          El servicio siempre se realiza bajo sombra, ya que los productos que utilizamos requieren estar protegidos de la luz solar directa para garantizar los mejores resultados.
+        </p>
+      </details>
+
+      <!-- FAQ 2 -->
+      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
+          <span>¿Qué cuidados debo tener después de aplicar el cerámico?</span>
+          <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
+        </summary>
+        <p class="mt-4 text-brand-grayText text-sm sm:text-base leading-relaxed border-t border-brand-cardBorder/60 pt-4">
+          El vehículo no debe mojarse durante al menos 8 horas después de la aplicación, para permitir que el producto cure correctamente y ofrezca la máxima protección.
+        </p>
+      </details>
+
+      <!-- FAQ 3 (SOLO SINPE MÓVIL) -->
+      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
+          <span>¿Cuáles son las formas de pago?</span>
+          <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
+        </summary>
+        <p class="mt-4 text-brand-grayText text-sm sm:text-base leading-relaxed border-t border-brand-cardBorder/60 pt-4">
+          Actualmente solo aceptamos pagos por SINPE Móvil al finalizar o coordinar el servicio.
+        </p>
+      </details>
+
+      <!-- FAQ 4 -->
+      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
+          <span>¿Necesito agendar cita previa?</span>
+          <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
+        </summary>
+        <p class="mt-4 text-brand-grayText text-sm sm:text-base leading-relaxed border-t border-brand-cardBorder/60 pt-4">
+          Sí, todos nuestros servicios son atendidos únicamente con cita previa para garantizar tiempo y calidad en cada trabajo.
+        </p>
+      </details>
+
+      <!-- FAQ 5 -->
+      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
+          <span>¿Cuál es la diferencia entre el cerámico incluido en el Detailing y el One Evo Certificado?</span>
+          <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
+        </summary>
+        <p class="mt-4 text-brand-grayText text-sm sm:text-base leading-relaxed border-t border-brand-cardBorder/60 pt-4">
+          El cerámico incluido en el Detailing Completo ofrece protección de hasta 2 meses. El One Evo Certificado es una opción más avanzada, con mayor durabilidad, protección superior y certificación oficial, aunque requiere aproximadamente un día completo de aplicación.
+        </p>
+      </details>
+
+      <!-- FAQ 6 -->
+      <details class="group bg-brand-card border border-brand-cardBorder rounded-2xl p-6 transition-all duration-300">
+        <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-hover:text-brand-neon transition-colors">
+          <span>¿Cuánto tiempo toma el servicio?</span>
+          <span class="faq-icon text-brand-neon text-2xl font-light transition-transform duration-300 ml-4 shrink-0">+</span>
+        </summary>
+        <p class="mt-4 text-brand-grayText text-sm sm:text-base leading-relaxed border-t border-brand-cardBorder/60 pt-4">
+          El Detailing Completo tiene una duración variable según el vehículo. El Cerámico One Evo Certificado requiere aproximadamente un día completo debido a su proceso de preparación y aplicación.
+        </p>
+      </details>
+
+    </div>
+
+  </section>
+
+  <!-- ================= BANNER CTA DE RESERVA ================= -->
+  <section class="py-20 px-5 relative">
+    <div class="max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-zinc-900 via-brand-card to-zinc-900 border border-brand-neon/30 p-10 sm:p-14 text-center relative overflow-hidden">
+      <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-brand-neon/15 rounded-full blur-3xl pointer-events-none"></div>
+
+      <h3 class="text-2xl sm:text-4xl font-extrabold text-white uppercase mb-4 tracking-tight">
+        ¿Listo para transformar el aspecto de tu vehículo?
+      </h3>
+      <p class="text-brand-grayText text-base max-w-xl mx-auto mb-8">
+        Reserva tu espacio directamente por WhatsApp. Te confirmaremos disponibilidad y horario de inmediato.
+      </p>
+
+      <a href="https://wa.me/50663904956" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-brand-neon text-black font-extrabold text-sm tracking-wider uppercase hover:bg-[#b0dc28] hover:shadow-neon-lg hover:scale-105 transition-all duration-300">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span>Escribir por WhatsApp</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER / CONTACTO ================= -->
+  <footer id="contacto" class="bg-[#070707] border-t border-brand-cardBorder/80 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        
+        <!-- Info Marca -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <img 
+              src="images/logo.png" 
+              alt="NOVALUX Logo" 
+              class="h-9 w-auto object-contain"
+              onerror="this.onerror=null; this.src='logo.png';"
+            />
+            <span class="text-2xl font-black tracking-widest text-white">
+              NOVALUX<span class="text-brand-neon text-xs align-top">®</span>
+            </span>
+          </div>
+          <p class="text-brand-grayText text-sm max-w-md mb-6 leading-relaxed">
+            Laboratorio de detailing automotriz especializado en restauración profunda y aplicación de recubrimientos cerámicos Q2 One Evo con certificación oficial.
+          </p>
+          <div class="inline-flex items-center gap-2 text-xs font-mono text-brand-neon bg-brand-neon/10 border border-brand-neon/30 px-3.5 py-1.5 rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-neon"></span>
+            Atención solo con cita previa
+          </div>
+        </div>
+
+        <!-- Contacto Directo -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-brand-neon mb-4">Contacto Directo</h4>
+          <ul class="space-y-3 text-sm">
+            <li>
+              <a href="https://wa.me/50663904956" target="_blank" rel="noopener noreferrer" 
+                 class="flex items-center gap-2.5 text-brand-grayLight hover:text-brand-neon transition-colors">
+                <svg class="w-4 h-4 text-brand-neon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                <span>6390-4956</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/novalux.cr" target="_blank" rel="noopener noreferrer" 
+                 class="flex items-center gap-2.5 text-brand-grayLight hover:text-brand-neon transition-colors">
+                <svg class="w-4 h-4 text-brand-neon" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>@novalux.cr</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Ubicación -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-brand-neon mb-4">Ubicación</h4>
+          <div class="flex items-center gap-2 text-brand-grayLight text-sm mb-2">
+            <svg class="w-4 h-4 text-brand-neon shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span>Costa Rica 🇨🇷</span>
+          </div>
+          <p class="text-xs text-brand-grayText">Dirección exacta proporcionada al confirmar la reserva de su cita.</p>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="border-t border-zinc-900 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-grayText">
+        <p>© <span id="year"></span> NOVALUX®. Todos los derechos reservados.</p>
+        <p class="text-zinc-400">Detailing Automotriz & Protección Cerámica</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ================= BOTÓN FLOTANTE DE WHATSAPP ================= -->
+  <a href="https://wa.me/50663904956" target="_blank" rel="noopener noreferrer"
+     class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-brand-neon text-black flex items-center justify-center shadow-neon-lg hover:scale-110 active:scale-95 transition-all duration-300"
+     aria-label="Contactar por WhatsApp">
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </a>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Año dinámico footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Toggle Menú Móvil
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIconClosed = document.getElementById('menuIconClosed');
+    const menuIconOpen = document.getElementById('menuIconOpen');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function toggleMenu() {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        menuIconClosed.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIconClosed.classList.remove('hidden');
+        menuIconOpen.classList.add('hidden');
+      }
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMenu);
+
+    // Cerrar menú al hacer clic en cualquier link
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIconClosed.classList.remove('hidden');
+        menuIconOpen.classList.add('hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

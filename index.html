@@ -75,6 +75,23 @@
       overflow-x: hidden;
     }
 
+    .booking-input {
+      display: block;
+      width: 100%;
+      margin-top: 0.5rem;
+      border: 1px solid #222226;
+      border-radius: 0.75rem;
+      background: #0A0A0A;
+      color: #FFFFFF;
+      padding: 0.75rem 0.875rem;
+      outline: none;
+    }
+
+    .booking-input:focus {
+      border-color: #C4F135;
+      box-shadow: 0 0 0 3px rgba(196, 241, 53, 0.12);
+    }
+
     .bg-radial-glow {
       background: radial-gradient(circle at 50% 15%, rgba(196, 241, 53, 0.12) 0%, rgba(10, 10, 10, 0) 65%);
     }
@@ -266,7 +283,7 @@
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
           </svg>
-          <span>Reservar por WhatsApp</span>
+          <span>Agendar mi cita</span>
         </a>
 
         <!-- Botón 2: Ver Planes -->
@@ -844,6 +861,57 @@
   </section>
 
   <!-- ================= BANNER CTA DE RESERVA ================= -->
+  <section id="agendar" data-aos="fade-up" class="py-24 px-5 bg-brand-card/40 border-y border-brand-cardBorder">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-[0.8fr_1.2fr] gap-12 items-start">
+      <div>
+        <p class="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-brand-neon mb-3">Agenda en línea</p>
+        <h2 class="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight mb-5">Reserva tu espacio</h2>
+        <p class="text-brand-grayText leading-relaxed mb-6">Elige tu fecha y horario. Cada servicio se reserva por un bloque de 4 horas, de lunes a domingo entre 8:00 a.m. y 8:00 p.m.</p>
+        <div class="space-y-3 text-sm text-brand-grayLight">
+          <p class="flex gap-3"><span class="text-brand-neon">01</span> Selecciona fecha y hora disponible.</p>
+          <p class="flex gap-3"><span class="text-brand-neon">02</span> Recibe confirmación en tu correo.</p>
+          <p class="flex gap-3"><span class="text-brand-neon">03</span> Te enviaremos un recordatorio por WhatsApp un día antes.</p>
+        </div>
+      </div>
+      <form id="bookingForm" class="bg-brand-card border border-brand-cardBorder rounded-3xl p-6 sm:p-8 shadow-neon-card">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="text-sm text-brand-grayLight">Nombre completo
+            <input name="name" required autocomplete="name" class="booking-input" />
+          </label>
+          <label class="text-sm text-brand-grayLight">WhatsApp
+            <input name="phone" required type="tel" placeholder="+506 8888 8888" class="booking-input" />
+          </label>
+          <label class="text-sm text-brand-grayLight">Correo electrónico
+            <input name="email" required type="email" autocomplete="email" class="booking-input" />
+          </label>
+          <label class="text-sm text-brand-grayLight">Servicio
+            <select name="service" required class="booking-input">
+              <option value="Detallado Completo">Detallado Completo</option>
+              <option value="Cerámico One Evo Certificado">Cerámico One Evo Certificado</option>
+            </select>
+          </label>
+          <label class="text-sm text-brand-grayLight">Fecha
+            <input id="bookingDate" name="date" required type="date" class="booking-input" />
+          </label>
+          <label class="text-sm text-brand-grayLight">Hora de inicio
+            <select name="time" required class="booking-input">
+              <option value="08:00">8:00 a.m.</option>
+              <option value="12:00">12:00 p.m.</option>
+              <option value="16:00">4:00 p.m.</option>
+            </select>
+          </label>
+        </div>
+        <label class="flex items-start gap-3 text-xs text-brand-grayText mt-5">
+          <input name="consent" required type="checkbox" class="mt-0.5 accent-brand-neon" />
+          <span>Acepto recibir confirmaciones y recordatorios relacionados con mi cita por correo y WhatsApp.</span>
+        </label>
+        <button type="submit" class="mt-6 w-full rounded-2xl bg-brand-neon text-black font-black uppercase tracking-wider py-4 hover:shadow-neon-lg transition-all">Confirmar reserva</button>
+        <p id="bookingMessage" role="status" class="hidden mt-4 text-sm text-center"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= BANNER CTA DE RESERVA ================= -->
   <section data-aos="fade-up" data-aos-delay="180" class="py-20 px-5 relative">
     <div class="max-w-5xl mx-auto rounded-3xl bg-gradient-to-r from-zinc-900 via-brand-card to-zinc-900 border border-brand-neon/30 p-10 sm:p-14 text-center relative overflow-hidden">
       <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-brand-neon/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -852,10 +920,10 @@
         ¿Listo para transformar el aspecto de tu vehículo?
       </h3>
       <p class="text-brand-grayText text-base max-w-xl mx-auto mb-8">
-        Reserva tu espacio directamente por WhatsApp. Te confirmaremos disponibilidad y horario de inmediato.
+        Reserva tu espacio en línea y recibe confirmación en tu correo. También te enviaremos un recordatorio por WhatsApp un día antes.
       </p>
 
-      <a href="https://wa.me/50663904956" target="_blank" rel="noopener noreferrer"
+      <a href="#agendar"
          class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-brand-neon text-black font-extrabold text-sm tracking-wider uppercase hover:bg-[#b0dc28] hover:shadow-neon-lg hover:scale-105 transition-all duration-300">
         <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
@@ -957,6 +1025,45 @@
   <script>
     // Año dinámico footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const bookingDate = document.getElementById('bookingDate');
+    if (bookingDate) {
+      const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
+      bookingDate.min = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Costa_Rica' }).format(tomorrow);
+    }
+
+    const bookingForm = document.getElementById('bookingForm');
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        const button = bookingForm.querySelector('button[type="submit"]');
+        const message = document.getElementById('bookingMessage');
+        button.disabled = true;
+        button.textContent = 'Procesando...';
+        message.className = 'mt-4 text-sm text-center text-brand-grayText';
+        message.textContent = 'Verificando disponibilidad...';
+        try {
+          const data = Object.fromEntries(new FormData(bookingForm));
+          data.consent = Boolean(data.consent);
+          const response = await fetch('/api/bookings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          const result = await response.json();
+          if (!response.ok) throw new Error(result.error || 'No se pudo reservar.');
+          bookingForm.reset();
+          message.className = 'mt-4 text-sm text-center text-brand-neon';
+          message.textContent = result.message;
+        } catch (error) {
+          message.className = 'mt-4 text-sm text-center text-red-400';
+          message.textContent = error.message;
+        } finally {
+          button.disabled = false;
+          button.textContent = 'Confirmar reserva';
+        }
+      });
+    }
 
     // Init AOS (animaciones de scroll)
     document.addEventListener('DOMContentLoaded', function() {
